@@ -531,7 +531,7 @@ impl Db {
     pub fn default_db_path() -> Result<PathBuf, String> {
         let dir = dirs::data_local_dir()
             .ok_or_else(|| "Unable to determine local application data directory".to_string())?;
-        Ok(dir.join("Notlasare").join("notlasare.db"))
+        Ok(dir.join("Notl-sare").join("notl-sare.db"))
     }
 
     pub fn open_default() -> Result<Self, String> {
@@ -1801,7 +1801,7 @@ mod tests {
     #[test]
     fn score_metadata_patch_preserves_omitted_and_clears_explicit_null() {
         let db = Db::open_in_memory().unwrap();
-        let s = sample_score("s1", "C:/Music/Notläsare_Bas.pdf", "abc123", "Änglamark");
+        let s = sample_score("s1", "C:/Music/Notl-sare_Bas.pdf", "abc123", "Änglamark");
         db.insert_score(&s).unwrap();
 
         let patched = db

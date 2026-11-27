@@ -1,7 +1,7 @@
 import type { TranslationDict } from './sv';
 
 export const en: TranslationDict = {
-  appName: 'Notläsare',
+  appName: 'Notl-sare',
   common: {
     back: 'Back',
     close: 'Close',

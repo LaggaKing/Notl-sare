@@ -30,7 +30,7 @@ import {
   type UpsertBookmarkInput,
 } from '../types';
 
-export interface NotlasareBackupScoreV1 {
+export interface NotlSareBackupScoreV1 {
   sha256: string;
   filePath?: string;
   filename: string;
@@ -52,7 +52,7 @@ export interface NotlasareBackupScoreV1 {
   annotations: PageAnnotations[];
 }
 
-export interface NotlasareBackupSetlistV1 {
+export interface NotlSareBackupSetlistV1 {
   id: string;
   name: string;
   createdAt: string;
@@ -64,12 +64,12 @@ export interface NotlasareBackupSetlistV1 {
   }>;
 }
 
-export interface NotlasareBackupV1 {
+export interface NotlSareBackupV1 {
   version: 1;
   exportedAt: string;
   settings: AppSettings;
-  scores: NotlasareBackupScoreV1[];
-  setlists: NotlasareBackupSetlistV1[];
+  scores: NotlSareBackupScoreV1[];
+  setlists: NotlSareBackupSetlistV1[];
 }
 
 export interface ImportBackupResult {
@@ -77,7 +77,7 @@ export interface ImportBackupResult {
   annotationsRestored: number;
 }
 
-export interface NotlasareTestApi {
+export interface NotlSareTestApi {
   registerMockPdf: typeof registerMockPdf;
   listScores: typeof listScores;
   getScoreAnnotations: typeof getScoreAnnotations;
@@ -88,7 +88,7 @@ export interface NotlasareTestApi {
 
 declare global {
   interface Window {
-    __NOTLASARE_TEST_API__?: NotlasareTestApi;
+    __NOTL_SARE_TEST_API__?: NotlSareTestApi;
   }
 }
 
@@ -189,11 +189,11 @@ function ensureFilenameExtension(filename: string, ext: string): string {
   const normalizedExt = ext.startsWith('.') ? ext : `.${ext}`;
   const lower = filename.toLowerCase();
   if (lower.endsWith(normalizedExt.toLowerCase())) {
-    return sanitizeExportFilename(filename, `notlasare${normalizedExt}`);
+    return sanitizeExportFilename(filename, `notl-sare${normalizedExt}`);
   }
   const maxBaseLen = MAX_EXPORT_FILENAME_LEN - normalizedExt.length;
   const trimmedBase = filename.slice(0, Math.max(1, maxBaseLen)).replace(/[.\s]+$/g, '');
-  return sanitizeExportFilename(`${trimmedBase}${normalizedExt}`, `notlasare${normalizedExt}`);
+  return sanitizeExportFilename(`${trimmedBase}${normalizedExt}`, `notl-sare${normalizedExt}`);
 }
 
 // ---------------------------------------------------------------------------
@@ -201,15 +201,15 @@ function ensureFilenameExtension(filename: string, ext: string): string {
 // ---------------------------------------------------------------------------
 
 const LS_KEYS = {
-  folders: 'notlasare.folders.v1',
-  scores: 'notlasare.scores.v1',
-  bookmarks: 'notlasare.bookmarks.v1',
-  setlists: 'notlasare.setlists.v1',
-  annotations: 'notlasare.annotations.v1',
-  settings: 'notlasare.settings.v1',
+  folders: 'notl-sare.folders.v1',
+  scores: 'notl-sare.scores.v1',
+  bookmarks: 'notl-sare.bookmarks.v1',
+  setlists: 'notl-sare.setlists.v1',
+  annotations: 'notl-sare.annotations.v1',
+  settings: 'notl-sare.settings.v1',
 } as const;
 
-const IDB_NAME = 'notlasare-pdfs';
+const IDB_NAME = 'notl-sare-pdfs';
 const IDB_STORE = 'files';
 
 const memoryStorageFallback = new Map<string, string>();
@@ -898,7 +898,7 @@ export async function exportPdfWithDialog(
   bytes: Uint8Array,
 ): Promise<boolean> {
   const safeName = ensureFilenameExtension(
-    sanitizeExportFilename(defaultName, 'notlasare-export.pdf'),
+    sanitizeExportFilename(defaultName, 'notl-sare-export.pdf'),
     '.pdf',
   );
 
@@ -1195,7 +1195,7 @@ export async function saveTextFileWithDialog(
   content: string,
 ): Promise<boolean> {
   const safeName = ensureFilenameExtension(
-    sanitizeExportFilename(defaultName, 'notlasare-backup.json'),
+    sanitizeExportFilename(defaultName, 'notl-sare-backup.json'),
     '.json',
   );
 
@@ -1233,7 +1233,7 @@ export async function exportBackupJson(): Promise<string> {
 
   const scoreById = new Map(scores.map((s) => [s.id, s]));
 
-  const scoreEntries: NotlasareBackupScoreV1[] = await Promise.all(
+  const scoreEntries: NotlSareBackupScoreV1[] = await Promise.all(
     scores.map(async (score) => {
       const [bookmarks, annotations] = await Promise.all([
         listBookmarks(score.id),
@@ -1262,7 +1262,7 @@ export async function exportBackupJson(): Promise<string> {
     }),
   );
 
-  const setlistEntries: NotlasareBackupSetlistV1[] = setlists.map((sl) => ({
+  const setlistEntries: NotlSareBackupSetlistV1[] = setlists.map((sl) => ({
     id: sl.id,
     name: sl.name,
     createdAt: sl.createdAt,
@@ -1279,7 +1279,7 @@ export async function exportBackupJson(): Promise<string> {
       .filter((entry): entry is NonNullable<typeof entry> => entry !== null),
   }));
 
-  const payload: NotlasareBackupV1 = {
+  const payload: NotlSareBackupV1 = {
     version: 1,
     exportedAt: new Date().toISOString(),
     settings,
@@ -2046,7 +2046,7 @@ async function resetBrowserStore(): Promise<void> {
 }
 
 if (typeof window !== 'undefined' && !isTauriEnv() && import.meta.env.MODE === 'test') {
-  window.__NOTLASARE_TEST_API__ = {
+  window.__NOTL_SARE_TEST_API__ = {
     registerMockPdf,
     listScores,
     getScoreAnnotations,

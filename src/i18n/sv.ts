@@ -182,7 +182,7 @@ export interface TranslationDict {
 }
 
 export const sv: TranslationDict = {
-  appName: 'Notläsare',
+  appName: 'Notl-sare',
   common: {
     back: 'Tillbaka',
     close: 'Stäng',

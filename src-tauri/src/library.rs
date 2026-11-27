@@ -546,7 +546,7 @@ mod tests {
 
     impl TempTestDir {
         fn new(name: &str) -> Self {
-            let dir = std::env::temp_dir().join(format!("notlasare_test_{}_{}", name, new_id(name)));
+            let dir = std::env::temp_dir().join(format!("notl_sare_test_{}_{}", name, new_id(name)));
             fs::create_dir_all(&dir).unwrap();
             Self { path: dir }
         }

@@ -233,12 +233,12 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
     activeSize: StrokeSizePreset,
     onSelect: (size: StrokeSizePreset) => void
   ) => (
-    <div className="notlasare-ann-group">
+    <div className="notl-sare-ann-group">
       {SIZE_PRESETS.map((sz) => (
         <button
           key={sz}
           type="button"
-          className={`notlasare-size-btn ${activeSize === sz ? 'notlasare-size-btn--active' : ''}`}
+          className={`notl-sare-size-btn ${activeSize === sz ? 'notl-sare-size-btn--active' : ''}`}
           onClick={() => onSelect(sz)}
           aria-pressed={activeSize === sz}
           aria-label={t.sizes[sz]}
@@ -255,7 +255,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
     activeColor: string,
     onSelect: (color: string) => void
   ) => (
-    <div className="notlasare-ann-group">
+    <div className="notl-sare-ann-group">
       {presets.map((preset) => {
         const isActive = activeColor.toLowerCase() === preset.color.toLowerCase();
         const label = labels[preset.id] ?? preset.color;
@@ -263,14 +263,14 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
           <button
             key={preset.id}
             type="button"
-            className={`notlasare-swatch-btn ${isActive ? 'notlasare-swatch-btn--active' : ''}`}
+            className={`notl-sare-swatch-btn ${isActive ? 'notl-sare-swatch-btn--active' : ''}`}
             onClick={() => onSelect(preset.color)}
             aria-pressed={isActive}
             aria-label={label}
             title={label}
           >
             <span
-              className="notlasare-swatch-dot"
+              className="notl-sare-swatch-dot"
               style={{ backgroundColor: preset.color }}
             />
           </button>
@@ -283,7 +283,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
     switch (toolState.tool) {
       case 'highlighter':
         return (
-          <div className="notlasare-ann-subrow">
+          <div className="notl-sare-ann-subrow">
             {renderColorSwatches(
               HIGHLIGHTER_COLOR_PRESETS,
               t.highlighterColors,
@@ -291,7 +291,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
               (color) =>
                 onToolStateChange({ ...toolState, highlighterColor: color })
             )}
-            <div className="notlasare-ann-divider" />
+            <div className="notl-sare-ann-divider" />
             {renderSizeButtons(toolState.highlighterSize, (sz) =>
               onToolStateChange({ ...toolState, highlighterSize: sz })
             )}
@@ -300,14 +300,14 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
       case 'pen':
         return (
-          <div className="notlasare-ann-subrow">
+          <div className="notl-sare-ann-subrow">
             {renderColorSwatches(
               PEN_COLOR_PRESETS,
               t.penColors,
               toolState.penColor,
               (color) => onToolStateChange({ ...toolState, penColor: color })
             )}
-            <div className="notlasare-ann-divider" />
+            <div className="notl-sare-ann-divider" />
             {renderSizeButtons(toolState.penSize, (sz) =>
               onToolStateChange({ ...toolState, penSize: sz })
             )}
@@ -316,15 +316,15 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
       case 'shape':
         return (
-          <div className="notlasare-ann-subrow">
-            <div className="notlasare-ann-group">
+          <div className="notl-sare-ann-subrow">
+            <div className="notl-sare-ann-group">
               {SHAPE_TYPES.map((st) => {
                 const isActive = toolState.shapeType === st;
                 return (
                   <button
                     key={st}
                     type="button"
-                    className={`notlasare-tool-btn ${isActive ? 'notlasare-tool-btn--active' : ''}`}
+                    className={`notl-sare-tool-btn ${isActive ? 'notl-sare-tool-btn--active' : ''}`}
                     onClick={() =>
                       onToolStateChange({ ...toolState, shapeType: st })
                     }
@@ -333,19 +333,19 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
                     title={t.shapes[st]}
                   >
                     <ShapePreviewIcon shapeType={st} />
-                    <span className="notlasare-tool-label">{t.shapes[st]}</span>
+                    <span className="notl-sare-tool-label">{t.shapes[st]}</span>
                   </button>
                 );
               })}
             </div>
-            <div className="notlasare-ann-divider" />
+            <div className="notl-sare-ann-divider" />
             {renderColorSwatches(
               PEN_COLOR_PRESETS,
               t.penColors,
               toolState.shapeColor,
               (color) => onToolStateChange({ ...toolState, shapeColor: color })
             )}
-            <div className="notlasare-ann-divider" />
+            <div className="notl-sare-ann-divider" />
             {renderSizeButtons(toolState.shapeSize, (sz) =>
               onToolStateChange({ ...toolState, shapeSize: sz })
             )}
@@ -354,10 +354,10 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
       case 'stamp':
         return (
-          <div className="notlasare-ann-subrow">
+          <div className="notl-sare-ann-subrow">
             <button
               type="button"
-              className="notlasare-tool-btn notlasare-tool-btn--subtle"
+              className="notl-sare-tool-btn notl-sare-tool-btn--subtle"
               onClick={onOpenStampPalette}
               aria-label={t.actions.chooseStamp}
             >
@@ -366,14 +366,14 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
               </span>
               <span>{t.stamps[toolState.stampType]}</span>
             </button>
-            <div className="notlasare-ann-divider" />
+            <div className="notl-sare-ann-divider" />
             {renderColorSwatches(
               STAMP_COLOR_PRESETS,
               t.stampColors,
               toolState.stampColor,
               (color) => onToolStateChange({ ...toolState, stampColor: color })
             )}
-            <div className="notlasare-ann-divider" />
+            <div className="notl-sare-ann-divider" />
             {renderSizeButtons(toolState.stampSize, (sz) =>
               onToolStateChange({ ...toolState, stampSize: sz })
             )}
@@ -382,16 +382,16 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
       case 'text':
         return (
-          <div className="notlasare-ann-subrow">
-            <span className="notlasare-ann-hint">{t.hints.text}</span>
-            <div className="notlasare-ann-group">
+          <div className="notl-sare-ann-subrow">
+            <span className="notl-sare-ann-hint">{t.hints.text}</span>
+            <div className="notl-sare-ann-group">
               {renderColorSwatches(
                 PEN_COLOR_PRESETS,
                 t.penColors,
                 toolState.textColor,
                 (color) => onToolStateChange({ ...toolState, textColor: color })
               )}
-              <div className="notlasare-ann-divider" />
+              <div className="notl-sare-ann-divider" />
               {renderSizeButtons(toolState.textSize, (sz) =>
                 onToolStateChange({ ...toolState, textSize: sz })
               )}
@@ -401,14 +401,14 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
       case 'eraser':
         return (
-          <div className="notlasare-ann-subrow">
-            <span className="notlasare-ann-hint">{t.hints.eraser}</span>
+          <div className="notl-sare-ann-subrow">
+            <span className="notl-sare-ann-hint">{t.hints.eraser}</span>
             {onClearPage && (
-              <div className="notlasare-ann-group">
+              <div className="notl-sare-ann-group">
                 {!confirmClear ? (
                   <button
                     type="button"
-                    className="notlasare-btn-danger"
+                    className="notl-sare-btn-danger"
                     onClick={() => setConfirmClear(true)}
                   >
                     <Trash2 size={18} />
@@ -418,7 +418,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
                   <>
                     <button
                       type="button"
-                      className="notlasare-btn-danger"
+                      className="notl-sare-btn-danger"
                       onClick={() => {
                         setConfirmClear(false);
                         onClearPage();
@@ -429,7 +429,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
                     </button>
                     <button
                       type="button"
-                      className="notlasare-btn-secondary"
+                      className="notl-sare-btn-secondary"
                       onClick={() => setConfirmClear(false)}
                       aria-label={t.actions.cancel}
                     >
@@ -444,8 +444,8 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
       case 'select':
         return (
-          <div className="notlasare-ann-subrow">
-            <span className="notlasare-ann-hint">{t.hints.select}</span>
+          <div className="notl-sare-ann-subrow">
+            <span className="notl-sare-ann-hint">{t.hints.select}</span>
           </div>
         );
     }
@@ -454,14 +454,14 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
   if (collapsed) {
     return (
       <div
-        className={`notlasare-ann-toolbar notlasare-ann-toolbar--${dockPosition} notlasare-ann-toolbar--collapsed`}
+        className={`notl-sare-ann-toolbar notl-sare-ann-toolbar--${dockPosition} notl-sare-ann-toolbar--collapsed`}
         role="toolbar"
         aria-label={t.tools[toolState.tool]}
       >
-        <div className="notlasare-ann-row">
+        <div className="notl-sare-ann-row">
           <button
             type="button"
-            className="notlasare-tool-btn notlasare-tool-btn--active"
+            className="notl-sare-tool-btn notl-sare-tool-btn--active"
             onClick={() => setCollapsed(false)}
             aria-label={t.actions.expandToolbar}
             title={t.actions.expandToolbar}
@@ -475,7 +475,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
           </button>
           <button
             type="button"
-            className="notlasare-tool-btn"
+            className="notl-sare-tool-btn"
             disabled={!canUndo}
             onClick={onUndo}
             aria-label={t.actions.undo}
@@ -485,7 +485,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
           </button>
           <button
             type="button"
-            className="notlasare-tool-btn notlasare-tool-btn--accent"
+            className="notl-sare-tool-btn notl-sare-tool-btn--accent"
             onClick={onDone}
           >
             <Check size={18} />
@@ -499,15 +499,15 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
   return (
     <>
       <div
-        className={`notlasare-ann-toolbar notlasare-ann-toolbar--${dockPosition}`}
+        className={`notl-sare-ann-toolbar notl-sare-ann-toolbar--${dockPosition}`}
         role="toolbar"
         aria-label={t.layers.defaultName}
       >
-        <div className="notlasare-ann-row">
-          <div className="notlasare-ann-group">
+        <div className="notl-sare-ann-row">
+          <div className="notl-sare-ann-group">
             <button
               type="button"
-              className={`notlasare-tool-btn ${toolState.tool === 'select' ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${toolState.tool === 'select' ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => selectTool('select')}
               aria-pressed={toolState.tool === 'select'}
               aria-label={t.tools.select}
@@ -517,7 +517,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${toolState.tool === 'highlighter' ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${toolState.tool === 'highlighter' ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => selectTool('highlighter')}
               aria-pressed={toolState.tool === 'highlighter'}
               aria-label={t.tools.highlighter}
@@ -527,7 +527,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${toolState.tool === 'pen' ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${toolState.tool === 'pen' ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => selectTool('pen')}
               aria-pressed={toolState.tool === 'pen'}
               aria-label={t.tools.pen}
@@ -537,7 +537,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${toolState.tool === 'eraser' ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${toolState.tool === 'eraser' ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => selectTool('eraser')}
               aria-pressed={toolState.tool === 'eraser'}
               aria-label={t.tools.eraser}
@@ -547,7 +547,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${toolState.tool === 'shape' ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${toolState.tool === 'shape' ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => selectTool('shape')}
               aria-pressed={toolState.tool === 'shape'}
               aria-label={t.tools.shape}
@@ -557,7 +557,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${toolState.tool === 'stamp' ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${toolState.tool === 'stamp' ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => {
                 if (toolState.tool === 'stamp') {
                   onOpenStampPalette();
@@ -574,7 +574,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${toolState.tool === 'text' ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${toolState.tool === 'text' ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => selectTool('text')}
               aria-pressed={toolState.tool === 'text'}
               aria-label={t.tools.text}
@@ -584,12 +584,12 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
           </div>
 
-          <div className="notlasare-ann-divider" />
+          <div className="notl-sare-ann-divider" />
 
-          <div className="notlasare-ann-group">
+          <div className="notl-sare-ann-group">
             <button
               type="button"
-              className="notlasare-tool-btn"
+              className="notl-sare-tool-btn"
               disabled={!canUndo}
               onClick={onUndo}
               aria-label={t.actions.undo}
@@ -599,7 +599,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className="notlasare-tool-btn"
+              className="notl-sare-tool-btn"
               disabled={!canRedo}
               onClick={onRedo}
               aria-label={t.actions.redo}
@@ -609,7 +609,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${layersOpen ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${layersOpen ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={() => setLayersOpen((prev) => !prev)}
               aria-expanded={layersOpen}
               aria-label={t.actions.layers}
@@ -619,7 +619,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className={`notlasare-tool-btn ${!showAllAnnotations ? 'notlasare-tool-btn--active' : ''}`}
+              className={`notl-sare-tool-btn ${!showAllAnnotations ? 'notl-sare-tool-btn--active' : ''}`}
               onClick={onToggleShowAllAnnotations}
               aria-pressed={showAllAnnotations}
               aria-label={
@@ -632,7 +632,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             {onExportPdf && (
               <button
                 type="button"
-                className="notlasare-tool-btn"
+                className="notl-sare-tool-btn"
                 disabled={isExportingPdf}
                 onClick={onExportPdf}
                 aria-label={
@@ -647,7 +647,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             )}
             <button
               type="button"
-              className="notlasare-tool-btn"
+              className="notl-sare-tool-btn"
               onClick={() =>
                 setDockPosition(dockPosition === 'top' ? 'bottom' : 'top')
               }
@@ -666,7 +666,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             </button>
             <button
               type="button"
-              className="notlasare-tool-btn"
+              className="notl-sare-tool-btn"
               onClick={() => {
                 setLayersOpen(false);
                 setCollapsed(true);
@@ -684,7 +684,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
           <button
             type="button"
-            className="notlasare-tool-btn notlasare-tool-btn--accent"
+            className="notl-sare-tool-btn notl-sare-tool-btn--accent"
             onClick={() => {
               setLayersOpen(false);
               onDone();
@@ -700,15 +700,15 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
       {layersOpen && (
         <div
-          className={`notlasare-layers-popover notlasare-layers-popover--${dockPosition}`}
+          className={`notl-sare-layers-popover notl-sare-layers-popover--${dockPosition}`}
           role="dialog"
           aria-label={t.layers.title}
         >
-          <div className="notlasare-layers-header">
-            <h3 className="notlasare-layers-title">{t.layers.title}</h3>
+          <div className="notl-sare-layers-header">
+            <h3 className="notl-sare-layers-title">{t.layers.title}</h3>
             <button
               type="button"
-              className="notlasare-tool-btn"
+              className="notl-sare-tool-btn"
               onClick={() => setLayersOpen(false)}
               aria-label={t.actions.close}
             >
@@ -722,7 +722,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
             return (
               <div
                 key={layer.id}
-                className={`notlasare-layer-row ${isActive ? 'notlasare-layer-row--active' : ''}`}
+                className={`notl-sare-layer-row ${isActive ? 'notl-sare-layer-row--active' : ''}`}
               >
                 {isEditing ? (
                   <input
@@ -754,12 +754,12 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
                 ) : (
                   <button
                     type="button"
-                    className="notlasare-layer-select-btn"
+                    className="notl-sare-layer-select-btn"
                     onClick={() => onSelectLayer(layer.id)}
                   >
                     <span>{layer.name}</span>
                     {isActive && (
-                      <span className="notlasare-layer-active-tag">
+                      <span className="notl-sare-layer-active-tag">
                         {t.layers.activeBadge}
                       </span>
                     )}
@@ -768,7 +768,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
                 <button
                   type="button"
-                  className="notlasare-tool-btn"
+                  className="notl-sare-tool-btn"
                   onClick={() => onToggleLayerVisibility(layer.id)}
                   aria-label={
                     layer.visible ? t.layers.hideLayer : t.layers.showLayer
@@ -783,7 +783,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
                 {onRenameLayer && !isEditing && (
                   <button
                     type="button"
-                    className="notlasare-tool-btn"
+                    className="notl-sare-tool-btn"
                     onClick={() => {
                       setEditingLayerId(layer.id);
                       setEditingLayerName(layer.name);
@@ -798,7 +798,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
                 {onDeleteLayer && layers.length > 1 && layer.id !== 'default' && (
                   <button
                     type="button"
-                    className="notlasare-tool-btn"
+                    className="notl-sare-tool-btn"
                     onClick={() => onDeleteLayer(layer.id)}
                     aria-label={t.layers.deleteLayer}
                     title={t.layers.deleteLayer}
@@ -812,7 +812,7 @@ export const AnnotationToolbar: React.FC<AnnotationToolbarProps> = ({
 
           <button
             type="button"
-            className="notlasare-btn-primary"
+            className="notl-sare-btn-primary"
             onClick={() => onAddLayer()}
           >
             <Plus size={18} />

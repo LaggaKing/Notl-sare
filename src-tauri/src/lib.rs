@@ -47,5 +47,5 @@ pub fn run() {
             commands::set_wake_lock,
         ])
         .run(tauri::generate_context!())
-        .expect("error while running Notläsare Tauri application");
+        .expect("error while running Notl-sare Tauri application");
 }

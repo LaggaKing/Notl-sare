@@ -43,7 +43,7 @@ describe('sanitizeExportFilename', () => {
 
 describe('backup export/import, validation, and browser store', () => {
   beforeEach(async () => {
-    await window.__NOTLASARE_TEST_API__?.resetBrowserStore();
+    await window.__NOTL_SARE_TEST_API__?.resetBrowserStore();
   });
 
   afterEach(() => {
@@ -94,7 +94,7 @@ describe('backup export/import, validation, and browser store', () => {
     expect(parsed.setlists[0].items[0].filename).toBe('aftonbon.pdf');
 
     // Reset and re-register PDF at a different path (moved file scenario)
-    await window.__NOTLASARE_TEST_API__?.resetBrowserStore();
+    await window.__NOTL_SARE_TEST_API__?.resetBrowserStore();
     const moved = await registerMockPdf('aftonbon.pdf', new Uint8Array([37, 80, 68, 70]), {
       id: 'score-moved',
       filePath: 'idb://pdf/new-location/aftonbon.pdf',

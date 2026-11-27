@@ -66,14 +66,14 @@ jobs:
           if (-not $msi) {
             throw "No .msi installer found under src-tauri/target/release/bundle/msi"
           }
-          $msiDestName = "Notlasare_${safeTag}_x64.msi"
+          $msiDestName = "Notl-sare_${safeTag}_x64.msi"
           Copy-Item -Path $msi.FullName -Destination (Join-Path $outDir $msiDestName) -Force
 
           $nsis = Get-ChildItem -Path "src-tauri/target/release/bundle/nsis" -Filter "*-setup.exe" | Select-Object -First 1
           if (-not $nsis) {
             throw "No -setup.exe installer found under src-tauri/target/release/bundle/nsis"
           }
-          $nsisDestName = "Notlasare_${safeTag}_x64-setup.exe"
+          $nsisDestName = "Notl-sare_${safeTag}_x64-setup.exe"
           Copy-Item -Path $nsis.FullName -Destination (Join-Path $outDir $nsisDestName) -Force
 
           Push-Location $outDir
@@ -91,7 +91,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.stage.outputs.tag }}
-          name: Notläsare ${{ steps.stage.outputs.tag }} (Windows Alpha)
+          name: Notl-sare ${{ steps.stage.outputs.tag }} (Windows Alpha)
           draft: true
           prerelease: true
           generate_release_notes: true

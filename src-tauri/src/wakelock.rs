@@ -22,7 +22,7 @@ impl WakeLockState {
     pub fn new() -> Self {
         let (tx, rx) = mpsc::channel::<WakeLockCommand>();
         let worker = thread::Builder::new()
-            .name("notlasare-wakelock".to_string())
+            .name("notl-sare-wakelock".to_string())
             .spawn(move || {
                 let mut currently_active = false;
                 while let Ok(cmd) = rx.recv() {

@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Notläsare",
+  "productName": "Notl-sare",
   "version": "0.1.0",
-  "identifier": "se.notlasare.app",
+  "identifier": "se.notl-sare.app",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "Notläsare",
+        "title": "Notl-sare",
         "width": 780,
         "height": 1160,
         "minWidth": 420,
@@ -29,7 +29,7 @@
     "active": true,
     "targets": ["msi", "nsis"],
     "shortDescription": "Local-only choir and vocal PDF sheet music reader",
-    "longDescription": "Notläsare is an offline-first portrait sheet music reader and annotator for choir and vocal PDFs with setlists, bookmarks, metronome, reference pitch, and annotated PDF export.",
+    "longDescription": "Notl-sare is an offline-first portrait sheet music reader and annotator for choir and vocal PDFs with setlists, bookmarks, metronome, reference pitch, and annotated PDF export.",
     "category": "Music",
     "license": "MIT",
     "icon": [

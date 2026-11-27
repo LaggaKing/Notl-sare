@@ -1,12 +1,12 @@
 **Svenska** | [English](README.md)
 
-# Notläsare
+# Notl-sare
 
-**Notläsare** är en helt lokal PDF-notläsare och anteckningsapp i stående format för kör- och sångnoter, byggd för repetitioner och konserter. Byggd med **Tauri v2**, **React**, **TypeScript**, **PDF.js** och **SQLite**.
+**Notl-sare** är en helt lokal PDF-läsare och anteckningsapp i stående format för kör- och sångnoter, byggd för repetitioner och konserter. Byggd med **Tauri v2**, **React**, **TypeScript**, **PDF.js** och **SQLite**.
 
 > [!NOTE]
 > **Windows Alpha-testversion (`v0.1.0-alpha.1`)**
-> Notläsare är för närvarande i tidig publik testfas för **Windows 10/11 (x64)**. Rapportera gärna buggar eller synpunkter från repetitioner via GitHub Issue-formulären.
+> Notl-sare är för närvarande i tidig publik testfas för **Windows 10/11 (x64)**. Rapportera gärna buggar eller synpunkter från repetitioner via GitHub Issue-formulären.
 
 ---
 
@@ -36,8 +36,8 @@
 ## Windows Alpha-nedladdning & SmartScreen-information
 
 Färdiga Windows-installationspaket för `v0.1.0-alpha.1` finns under GitHub Releases:
-- `Notlasare_v0.1.0-alpha.1_x64-setup.exe` (NSIS-installer)
-- `Notlasare_v0.1.0-alpha.1_x64.msi` (MSI-installer)
+- `Notl-sare_v0.1.0-alpha.1_x64-setup.exe` (NSIS-installer)
+- `Notl-sare_v0.1.0-alpha.1_x64.msi` (MSI-installer)
 - `SHA256SUMS.txt` (SHA-256-kontrollsummor)
 
 ### Windows SmartScreen-varning (osignerade alfaversioner)
@@ -52,7 +52,7 @@ Alfaversionerna är ännu **inte kodsignerade** med ett kommersiellt certifikat.
 Lägg installationsfilen och `SHA256SUMS.txt` i samma mapp och kör:
 
 ```powershell
-Get-FileHash .\Notlasare_v0.1.0-alpha.1_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Notl-sare_v0.1.0-alpha.1_x64-setup.exe -Algorithm SHA256
 Get-Content .\SHA256SUMS.txt
 ```
 
@@ -62,13 +62,13 @@ Kontrollera att kontrollsumman stämmer överens med motsvarande rad i `SHA256SU
 
 ## Integritet & säkerhetsmodell
 
-Notläsare är byggd för att vara helt lokal och privat under repetitioner och konserter:
+Notl-sare är byggd för att vara helt lokal och privat under repetitioner och konserter:
 
 - **100 % offline & lokalt**: Ingen telemetri, ingen spårning, inga externa typsnitt/CDN-anrop och ingen nätverkskommunikation.
 - **Härdad Rust-dialog-IPC**:
   - Inget obegränsat Tauri `assetProtocol` (`**`) och ingen bred filsystemstillgång från WebView.
   - Systemets fil- och mappdialoger öppnas direkt från Rust-kommandon, och PDF-läsning/export kontrollerar `.pdf`-ändelse, `%PDF-`-signatur, avvisar UNC-/enhetssökvägar samt tillämpar strikta storleksgränser.
-  - Alla anteckningar, låtlistor, bokmärken och inställningar lagras lokalt i SQLite (`%LOCALAPPDATA%\Notlasare\notlasare.db`).
+  - Alla anteckningar, låtlistor, bokmärken och inställningar lagras lokalt i SQLite (`%LOCALAPPDATA%\Notl-sare\notl-sare.db`).
 
 Se [SECURITY.md](SECURITY.md) för mer information om säkerhetsarkitekturen och hur säkerhetsproblem rapporteras.
 
@@ -83,12 +83,12 @@ Se [SECURITY.md](SECURITY.md) för mer information om säkerhetsarkitekturen och
 - **Tauri v2-förutsättningar för Windows**: Microsoft Visual Studio C++ Build Tools (MSVC) och WebView2 Runtime (förinstallerat i Windows 11 och de flesta Windows 10-installationer)
 
 > [!TIP]
-> **Viktigt tips för Windows-sökvägar med å/ä/ö (`Notläsare`)**
-> Om sökvägen till din lokala mapp innehåller icke-ASCII-tecken (som `ä` i `Notläsare`) kan MSVC/WiX/NSIS-byggskript misslyckas när Cargo bygger i `src-tauri/target`. Sätt `CARGO_TARGET_DIR` till en ren ASCII-sökväg innan du kör `cargo` eller `tauri`:
+> **Viktigt tips för Windows-sökvägar med icke-ASCII-tecken (å/ä/ö)**
+> Om sökvägen till din lokala klonmapp innehåller icke-ASCII-tecken (som `å`, `ä` eller `ö`) kan MSVC/WiX/NSIS-byggskript misslyckas när Cargo bygger i `src-tauri/target`. Sätt `CARGO_TARGET_DIR` till en ren ASCII-sökväg innan du kör `cargo` eller `tauri`:
 > ```powershell
-> $env:CARGO_TARGET_DIR = "$env:LOCALAPPDATA\Notlasare-cargo-target"
+> $env:CARGO_TARGET_DIR = "$env:LOCALAPPDATA\Notl-sare-cargo-target"
 > ```
-> (Eller t.ex. `C:\temp\notlasare-target`.)
+> (Eller t.ex. `C:\temp\notl-sare-target`.)
 
 ### Kommandon
 

@@ -307,7 +307,7 @@ describe('App end-to-end integration & hardening', () => {
       expect(screen.getByLabelText('Penna')).toBeTruthy();
     });
     fireEvent.click(screen.getByLabelText('Penna'));
-    const canvas = document.querySelector('.notlasare-annotation-root--active') as HTMLElement;
+    const canvas = document.querySelector('.notl-sare-annotation-root--active') as HTMLElement;
     expect(canvas).toBeTruthy();
     fireEvent.pointerDown(canvas, { pointerId: 1, clientX: 50, clientY: 50, button: 0 });
     fireEvent.pointerMove(canvas, { pointerId: 1, clientX: 160, clientY: 160 });

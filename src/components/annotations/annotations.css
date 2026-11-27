@@ -1,19 +1,19 @@
 /* === Annotation Canvas & Overlay Layers === */
 
-.notlasare-annotation-root {
+.notl-sare-annotation-root {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.notlasare-annotation-root--active {
+.notl-sare-annotation-root--active {
   pointer-events: auto;
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
 }
 
-.notlasare-annotation-svg {
+.notl-sare-annotation-svg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -23,23 +23,23 @@
   pointer-events: none;
 }
 
-.notlasare-annotation-svg--highlighter {
+.notl-sare-annotation-svg--highlighter {
   mix-blend-mode: multiply;
 }
 
-.notlasare-annotation-root--active .notlasare-annotation-svg--interactive {
+.notl-sare-annotation-root--active .notl-sare-annotation-svg--interactive {
   pointer-events: auto;
   touch-action: none;
 }
 
 /* Selection UI overlay inside SVG / HTML */
-.notlasare-annotation-controls-layer {
+.notl-sare-annotation-controls-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.notlasare-selection-box {
+.notl-sare-selection-box {
   position: absolute;
   border: 2px dashed var(--accent);
   border-radius: 6px;
@@ -47,7 +47,7 @@
   pointer-events: none;
 }
 
-.notlasare-selection-handle {
+.notl-sare-selection-handle {
   position: absolute;
   min-width: var(--touch-target-min, 48px);
   min-height: var(--touch-target-min, 48px);
@@ -64,20 +64,20 @@
   z-index: 8;
 }
 
-.notlasare-selection-handle--delete {
+.notl-sare-selection-handle--delete {
   background: var(--danger);
   color: #ffffff;
   transform: translate(-50%, -50%);
 }
 
-.notlasare-selection-handle--resize {
+.notl-sare-selection-handle--resize {
   background: var(--accent);
   color: var(--text-on-accent);
   transform: translate(-50%, -50%);
   cursor: nwse-resize;
 }
 
-.notlasare-selection-handle--edit {
+.notl-sare-selection-handle--edit {
   background: var(--bg-elevated);
   color: var(--text-primary);
   border-color: var(--accent);
@@ -85,7 +85,7 @@
 }
 
 /* Inline floating text editor */
-.notlasare-text-popover {
+.notl-sare-text-popover {
   position: absolute;
   z-index: 20;
   min-width: 240px;
@@ -103,7 +103,7 @@
   touch-action: manipulation;
 }
 
-.notlasare-text-popover-input {
+.notl-sare-text-popover-input {
   width: 100%;
   min-height: 48px;
   padding: 10px 12px;
@@ -115,14 +115,14 @@
   resize: vertical;
 }
 
-.notlasare-text-popover-actions {
+.notl-sare-text-popover-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
 }
 
-.notlasare-btn-primary {
+.notl-sare-btn-primary {
   background: var(--accent);
   color: var(--text-on-accent);
   font-weight: 600;
@@ -132,7 +132,7 @@
   min-width: var(--touch-target-min, 48px);
 }
 
-.notlasare-btn-secondary {
+.notl-sare-btn-secondary {
   background: var(--bg-elevated);
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
@@ -142,7 +142,7 @@
   min-width: var(--touch-target-min, 48px);
 }
 
-.notlasare-btn-danger {
+.notl-sare-btn-danger {
   background: rgba(224, 93, 93, 0.16);
   color: var(--danger);
   border: 1px solid rgba(224, 93, 93, 0.35);
@@ -154,7 +154,7 @@
 
 /* === Floating / Dockable Annotation Toolbar === */
 
-.notlasare-ann-toolbar {
+.notl-sare-ann-toolbar {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -174,21 +174,21 @@
   touch-action: manipulation;
 }
 
-.notlasare-ann-toolbar--top {
+.notl-sare-ann-toolbar--top {
   top: 10px;
 }
 
-.notlasare-ann-toolbar--bottom {
+.notl-sare-ann-toolbar--bottom {
   bottom: 10px;
 }
 
-.notlasare-ann-toolbar--collapsed {
+.notl-sare-ann-toolbar--collapsed {
   width: auto;
   max-width: calc(100vw - 24px);
   padding: 4px 8px;
 }
 
-.notlasare-ann-row {
+.notl-sare-ann-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -196,7 +196,7 @@
   gap: 6px 4px;
 }
 
-.notlasare-ann-subrow {
+.notl-sare-ann-subrow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -206,14 +206,14 @@
   border-top: 1px solid var(--border-subtle);
 }
 
-.notlasare-ann-group {
+.notl-sare-ann-group {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 4px;
 }
 
-.notlasare-ann-divider {
+.notl-sare-ann-divider {
   width: 1px;
   height: 28px;
   background: var(--border-subtle);
@@ -222,12 +222,12 @@
 }
 
 @media (max-width: 840px) {
-  .notlasare-ann-divider {
+  .notl-sare-ann-divider {
     display: none;
   }
 }
 
-.notlasare-tool-btn {
+.notl-sare-tool-btn {
   min-width: var(--touch-target-min, 48px);
   min-height: var(--touch-target-min, 48px);
   padding: 0 10px;
@@ -244,13 +244,13 @@
   font-weight: 500;
 }
 
-.notlasare-tool-btn--active {
+.notl-sare-tool-btn--active {
   background: var(--accent-muted);
   color: var(--accent);
   border-color: var(--accent);
 }
 
-.notlasare-tool-btn--accent {
+.notl-sare-tool-btn--accent {
   background: var(--accent);
   color: var(--text-on-accent);
   font-weight: 600;
@@ -258,13 +258,13 @@
   padding: 0 14px;
 }
 
-.notlasare-tool-btn--subtle {
+.notl-sare-tool-btn--subtle {
   background: var(--bg-elevated);
   color: var(--text-primary);
   border-color: var(--border-subtle);
 }
 
-.notlasare-swatch-btn {
+.notl-sare-swatch-btn {
   min-width: var(--touch-target-min, 48px);
   min-height: var(--touch-target-min, 48px);
   width: 48px;
@@ -279,12 +279,12 @@
   flex-shrink: 0;
 }
 
-.notlasare-swatch-btn--active {
+.notl-sare-swatch-btn--active {
   background: var(--bg-elevated);
   border-color: var(--accent);
 }
 
-.notlasare-swatch-dot {
+.notl-sare-swatch-dot {
   width: 24px;
   height: 24px;
   border-radius: 999px;
@@ -292,7 +292,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 
-.notlasare-size-btn {
+.notl-sare-size-btn {
   min-width: var(--touch-target-min, 48px);
   min-height: var(--touch-target-min, 48px);
   padding: 0 12px;
@@ -304,32 +304,32 @@
   flex-shrink: 0;
 }
 
-.notlasare-size-btn--active {
+.notl-sare-size-btn--active {
   background: var(--accent-muted);
   color: var(--accent);
   border-color: var(--accent);
 }
 
-.notlasare-ann-hint {
+.notl-sare-ann-hint {
   font-size: 13px;
   color: var(--text-secondary);
   padding: 0 6px;
   white-space: nowrap;
 }
 
-.notlasare-tool-label {
+.notl-sare-tool-label {
   display: none;
 }
 
 @media (min-width: 720px) {
-  .notlasare-tool-label {
+  .notl-sare-tool-label {
     display: inline;
   }
 }
 
 /* === Layers Popover === */
 
-.notlasare-layers-popover {
+.notl-sare-layers-popover {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -348,28 +348,28 @@
   gap: 8px;
 }
 
-.notlasare-layers-popover--top {
+.notl-sare-layers-popover--top {
   top: 190px;
 }
 
-.notlasare-layers-popover--bottom {
+.notl-sare-layers-popover--bottom {
   bottom: 190px;
 }
 
-.notlasare-layers-header {
+.notl-sare-layers-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.notlasare-layers-title {
+.notl-sare-layers-title {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
 }
 
-.notlasare-layer-row {
+.notl-sare-layer-row {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -379,12 +379,12 @@
   background: var(--bg-elevated);
 }
 
-.notlasare-layer-row--active {
+.notl-sare-layer-row--active {
   border-color: var(--accent);
   background: var(--accent-muted);
 }
 
-.notlasare-layer-select-btn {
+.notl-sare-layer-select-btn {
   flex: 1;
   min-height: var(--touch-target-min, 48px);
   justify-content: flex-start;
@@ -396,7 +396,7 @@
   white-space: nowrap;
 }
 
-.notlasare-layer-active-tag {
+.notl-sare-layer-active-tag {
   font-size: 11px;
   font-weight: 700;
   padding: 2px 7px;
@@ -409,7 +409,7 @@
 
 /* === Stamp Palette Modal / Sheet === */
 
-.notlasare-stamp-backdrop {
+.notl-sare-stamp-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.56);
@@ -421,12 +421,12 @@
 }
 
 @media (min-width: 640px) {
-  .notlasare-stamp-backdrop {
+  .notl-sare-stamp-backdrop {
     align-items: center;
   }
 }
 
-.notlasare-stamp-sheet {
+.notl-sare-stamp-sheet {
   width: min(640px, 100%);
   max-height: 78vh;
   background: var(--bg-surface);
@@ -439,7 +439,7 @@
   overflow: hidden;
 }
 
-.notlasare-stamp-sheet-header {
+.notl-sare-stamp-sheet-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -447,13 +447,13 @@
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.notlasare-stamp-sheet-title {
+.notl-sare-stamp-sheet-title {
   margin: 0;
   font-size: 17px;
   font-weight: 600;
 }
 
-.notlasare-stamp-tabs {
+.notl-sare-stamp-tabs {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -464,11 +464,11 @@
   flex-shrink: 0;
 }
 
-.notlasare-stamp-tabs::-webkit-scrollbar {
+.notl-sare-stamp-tabs::-webkit-scrollbar {
   display: none;
 }
 
-.notlasare-stamp-tab {
+.notl-sare-stamp-tab {
   min-height: var(--touch-target-min, 48px);
   padding: 0 14px;
   border-radius: var(--radius-pill);
@@ -481,14 +481,14 @@
   flex-shrink: 0;
 }
 
-.notlasare-stamp-tab--active {
+.notl-sare-stamp-tab--active {
   background: var(--accent);
   color: var(--text-on-accent);
   border-color: var(--accent);
   font-weight: 600;
 }
 
-.notlasare-stamp-grid-scroll {
+.notl-sare-stamp-grid-scroll {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 12px;
@@ -497,7 +497,7 @@
   gap: 14px;
 }
 
-.notlasare-stamp-category-title {
+.notl-sare-stamp-category-title {
   margin: 0 0 8px 0;
   font-size: 13px;
   font-weight: 600;
@@ -506,13 +506,13 @@
   color: var(--text-muted);
 }
 
-.notlasare-stamp-grid {
+.notl-sare-stamp-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
   gap: 8px;
 }
 
-.notlasare-stamp-card {
+.notl-sare-stamp-card {
   min-height: 76px;
   padding: 8px 6px;
   border-radius: var(--radius-md);
@@ -527,12 +527,12 @@
   text-align: center;
 }
 
-.notlasare-stamp-card--active {
+.notl-sare-stamp-card--active {
   border-color: var(--accent);
   background: var(--accent-muted);
 }
 
-.notlasare-stamp-card-glyph {
+.notl-sare-stamp-card-glyph {
   width: 38px;
   height: 30px;
   display: flex;
@@ -541,7 +541,7 @@
   color: var(--text-primary);
 }
 
-.notlasare-stamp-card-name {
+.notl-sare-stamp-card-name {
   font-size: 12px;
   line-height: 1.2;
   color: var(--text-secondary);

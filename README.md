@@ -1,12 +1,12 @@
 [Svenska](README.sv.md) | **English**
 
-# Notläsare
+# Notl-sare
 
-**Notläsare** is a local-only, portrait-first choir and vocal PDF sheet music reader and annotator built for rehearsals and concerts. Built with **Tauri v2**, **React**, **TypeScript**, **PDF.js**, and **SQLite**.
+**Notl-sare** is a local-only, portrait-first choir and vocal PDF sheet music reader and annotator built for rehearsals and concerts. Built with **Tauri v2**, **React**, **TypeScript**, **PDF.js**, and **SQLite**.
 
 > [!NOTE]
 > **Windows Alpha Test Release (`v0.1.0-alpha.1`)**
-> Notläsare is currently in early public testing on **Windows 10/11 (x64)**. Please report bugs or rehearsal feedback using the GitHub issue forms.
+> Notl-sare is currently in early public testing on **Windows 10/11 (x64)**. Please report bugs or rehearsal feedback using the GitHub issue forms.
 
 ---
 
@@ -36,8 +36,8 @@
 ## Windows Alpha Download & SmartScreen Notice
 
 Pre-built Windows installers for `v0.1.0-alpha.1` are provided on the GitHub Releases page:
-- `Notlasare_v0.1.0-alpha.1_x64-setup.exe` (NSIS installer)
-- `Notlasare_v0.1.0-alpha.1_x64.msi` (MSI installer)
+- `Notl-sare_v0.1.0-alpha.1_x64-setup.exe` (NSIS installer)
+- `Notl-sare_v0.1.0-alpha.1_x64.msi` (MSI installer)
 - `SHA256SUMS.txt` (SHA-256 checksums)
 
 ### Windows SmartScreen Warning (Unsigned Alpha Builds)
@@ -52,7 +52,7 @@ Alpha test builds are **not code-signed** with a commercial EV/OV certificate ye
 Download the installer and `SHA256SUMS.txt` into the same folder and run:
 
 ```powershell
-Get-FileHash .\Notlasare_v0.1.0-alpha.1_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Notl-sare_v0.1.0-alpha.1_x64-setup.exe -Algorithm SHA256
 Get-Content .\SHA256SUMS.txt
 ```
 
@@ -62,13 +62,13 @@ Confirm that the resulting hash matches the corresponding entry in `SHA256SUMS.t
 
 ## Privacy & Security Model
 
-Notläsare is designed to stay strictly local and private during rehearsals and performances:
+Notl-sare is designed to stay strictly local and private during rehearsals and performances:
 
 - **100% Offline & Local**: Zero telemetry, zero analytics, zero external fonts/CDNs, and zero outbound network requests.
 - **Hardened Rust Dialog IPC**:
   - No unrestricted Tauri `assetProtocol` (`**`) and no broad WebView filesystem scope.
   - Native OS file/folder dialogs are invoked directly from Rust IPC commands, and PDF reads/exports are bound to validated `.pdf` files with `%PDF-` header checks, UNC/device-path rejection, and strict size caps.
-  - All annotations, setlists, bookmarks, and settings are stored locally in SQLite (`%LOCALAPPDATA%\Notlasare\notlasare.db`).
+  - All annotations, setlists, bookmarks, and settings are stored locally in SQLite (`%LOCALAPPDATA%\Notl-sare\notl-sare.db`).
 
 See [SECURITY.md](SECURITY.md) for more architectural details and vulnerability reporting instructions.
 
@@ -83,12 +83,12 @@ See [SECURITY.md](SECURITY.md) for more architectural details and vulnerability 
 - **Tauri v2 Windows prerequisites**: Microsoft Visual Studio C++ Build Tools (MSVC) and WebView2 Runtime (pre-installed on Windows 11 and most Windows 10 systems)
 
 > [!TIP]
-> **Windows Non-ASCII Path Workaround (`Notläsare`)**
-> If your local clone directory path contains non-ASCII characters (such as `ä` in `Notläsare`), Windows MSVC/WiX/NSIS build scripts can fail when Cargo writes into `src-tauri/target`. Set `CARGO_TARGET_DIR` to an ASCII-only directory before running `cargo` or `tauri` commands:
+> **Windows Non-ASCII Path Workaround**
+> If your local clone directory path contains non-ASCII characters (such as `å`, `ä`, or `ö`), Windows MSVC/WiX/NSIS build scripts can fail when Cargo writes into `src-tauri/target`. Set `CARGO_TARGET_DIR` to an ASCII-only directory before running `cargo` or `tauri` commands:
 > ```powershell
-> $env:CARGO_TARGET_DIR = "$env:LOCALAPPDATA\Notlasare-cargo-target"
+> $env:CARGO_TARGET_DIR = "$env:LOCALAPPDATA\Notl-sare-cargo-target"
 > ```
-> (Or e.g. `C:\temp\notlasare-target`.)
+> (Or e.g. `C:\temp\notl-sare-target`.)
 
 ### Commands
 

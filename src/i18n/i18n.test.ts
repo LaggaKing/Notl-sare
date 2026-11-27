@@ -61,8 +61,8 @@ describe('i18n strict sv/en parity across all dictionaries', () => {
 
     expect(getTranslations('sv').library.title).toBe('Bibliotek');
     expect(getTranslations('en').library.title).toBe('Library');
-    expect(getTranslations('sv').appName).toBe('Notläsare');
-    expect(getTranslations('en').appName).toBe('Notläsare');
+    expect(getTranslations('sv').appName).toBe('Notl-sare');
+    expect(getTranslations('en').appName).toBe('Notl-sare');
     expect(formatMessage(sv.library.lastOpenedPage, { page: 2, total: 5 })).toBe(
       'Senast på sida 2 av 5',
     );

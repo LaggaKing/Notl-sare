@@ -1212,7 +1212,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`notlasare-annotation-root ${active ? 'notlasare-annotation-root--active' : ''} ${className ?? ''}`}
+      className={`notl-sare-annotation-root ${active ? 'notl-sare-annotation-root--active' : ''} ${className ?? ''}`}
       data-annotation-active={active ? 'true' : 'false'}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
@@ -1223,7 +1223,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
       {/* Dedicated multiply-blended highlighter layer so black staff lines & lyrics stay crisp */}
       {showAllAnnotations && (
         <svg
-          className="notlasare-annotation-svg notlasare-annotation-svg--highlighter"
+          className="notl-sare-annotation-svg notl-sare-annotation-svg--highlighter"
           viewBox={`0 0 ${VB_WIDTH} ${vbHeight.toFixed(2)}`}
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -1246,7 +1246,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
       {/* Pen strokes, shapes, stamps, and text annotations */}
       {showAllAnnotations && (
         <svg
-          className={`notlasare-annotation-svg ${active ? 'notlasare-annotation-svg--interactive' : ''}`}
+          className={`notl-sare-annotation-svg ${active ? 'notl-sare-annotation-svg--interactive' : ''}`}
           viewBox={`0 0 ${VB_WIDTH} ${vbHeight.toFixed(2)}`}
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -1279,9 +1279,9 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
 
       {/* Selection bounding box & >=48px touch handles */}
       {active && selectedItem && selectedBounds && (
-        <div className="notlasare-annotation-controls-layer">
+        <div className="notl-sare-annotation-controls-layer">
           <div
-            className="notlasare-selection-box"
+            className="notl-sare-selection-box"
             style={{
               left: `${clamp01(selectedBounds.minX) * 100}%`,
               top: `${clamp01(selectedBounds.minY) * 100}%`,
@@ -1292,7 +1292,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
 
           <button
             type="button"
-            className="notlasare-selection-handle notlasare-selection-handle--delete"
+            className="notl-sare-selection-handle notl-sare-selection-handle--delete"
             style={{
               left: `${clamp01(selectedBounds.maxX) * 100}%`,
               top: `${clamp01(selectedBounds.minY) * 100}%`,
@@ -1308,7 +1308,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
           {selectedItem.kind === 'stamp' && (
             <button
               type="button"
-              className="notlasare-selection-handle notlasare-selection-handle--resize"
+              className="notl-sare-selection-handle notl-sare-selection-handle--resize"
               style={{
                 left: `${clamp01(selectedBounds.maxX) * 100}%`,
                 top: `${clamp01(selectedBounds.maxY) * 100}%`,
@@ -1324,7 +1324,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
           {selectedItem.kind === 'text' && (
             <button
               type="button"
-              className="notlasare-selection-handle notlasare-selection-handle--edit"
+              className="notl-sare-selection-handle notl-sare-selection-handle--edit"
               style={{
                 left: `${clamp01(selectedBounds.minX) * 100}%`,
                 top: `${clamp01(selectedBounds.minY) * 100}%`,
@@ -1350,7 +1350,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
       {/* Inline floating text popover */}
       {active && textEditor && (
         <div
-          className="notlasare-text-popover"
+          className="notl-sare-text-popover"
           style={{
             left: `${Math.min(62, Math.max(3, textEditor.position.x * 100))}%`,
             top: `${Math.min(72, Math.max(4, textEditor.position.y * 100))}%`,
@@ -1360,7 +1360,7 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
         >
           <textarea
             ref={textInputRef}
-            className="notlasare-text-popover-input"
+            className="notl-sare-text-popover-input"
             rows={2}
             value={textEditor.text}
             placeholder={t.textEditor.placeholder}
@@ -1378,17 +1378,17 @@ export const AnnotationCanvas: React.FC<AnnotationCanvasProps> = ({
               }
             }}
           />
-          <div className="notlasare-text-popover-actions">
+          <div className="notl-sare-text-popover-actions">
             <button
               type="button"
-              className="notlasare-btn-secondary"
+              className="notl-sare-btn-secondary"
               onClick={() => setTextEditor(null)}
             >
               {t.actions.cancel}
             </button>
             <button
               type="button"
-              className="notlasare-btn-primary"
+              className="notl-sare-btn-primary"
               onClick={handleSaveTextEditor}
             >
               {t.actions.save}

@@ -10,7 +10,7 @@ During the alpha testing phase, security fixes apply to the latest `0.1.x` relea
 
 ## Local-Only Security Architecture
 
-Notläsare is an offline-first desktop application designed with minimal host exposure:
+Notl-sare is an offline-first desktop application designed with minimal host exposure:
 
 - **No network telemetry or remote calls**: The application makes no outbound HTTP, WebSocket, or analytics requests.
 - **Minimal Tauri capability scope**: The WebView capability (`src-tauri/capabilities/default.json`) is restricted to `core:default`, with `assetProtocol` disabled and `tauri-plugin-fs` removed.

@@ -1,13 +1,13 @@
 [package]
-name = "notlasare"
+name = "notl-sare"
 version = "0.1.0"
 description = "Local-only portrait choir and vocal PDF sheet music reader and annotator"
-authors = ["Notläsare contributors"]
+authors = ["Notl-sare contributors"]
 license = "MIT"
 edition = "2021"
 
 [lib]
-name = "notlasare"
+name = "notl_sare"
 path = "src/lib.rs"
 
 [build-dependencies]

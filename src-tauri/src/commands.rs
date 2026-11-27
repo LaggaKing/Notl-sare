@@ -460,7 +460,7 @@ pub async fn export_backup_with_dialog(
     serde_json::from_str::<serde_json::Value>(&json_content)
         .map_err(|_| "Backup payload is not valid JSON".to_string())?;
 
-    let safe_name = sanitize_export_filename(&default_filename, "json", "notlasare-backup");
+    let safe_name = sanitize_export_filename(&default_filename, "json", "notl-sare-backup");
 
     tauri::async_runtime::spawn_blocking(move || -> Result<bool, String> {
         let Some(picked) = app
@@ -632,7 +632,7 @@ mod tests {
 
     #[test]
     fn write_bytes_atomically_creates_and_replaces_pdf() {
-        let dir = std::env::temp_dir().join(format!("notlasare_cmd_test_{}", new_id("write")));
+        let dir = std::env::temp_dir().join(format!("notl_sare_cmd_test_{}", new_id("write")));
         fs::create_dir_all(&dir).unwrap();
         let dest = dir.join("export.pdf");
 
@@ -660,7 +660,7 @@ mod tests {
 
     #[test]
     fn read_bounded_file_validates_magic_header_and_size_cap() {
-        let dir = std::env::temp_dir().join(format!("notlasare_read_test_{}", new_id("read")));
+        let dir = std::env::temp_dir().join(format!("notl_sare_read_test_{}", new_id("read")));
         fs::create_dir_all(&dir).unwrap();
 
         let bad_pdf = dir.join("bad.pdf");
@@ -696,8 +696,8 @@ mod tests {
             "a_b_c_d_e_f_g_h.pdf"
         );
         assert_eq!(
-            sanitize_export_filename("   ...  ", "json", "notlasare-backup"),
-            "notlasare-backup.json"
+            sanitize_export_filename("   ...  ", "json", "notl-sare-backup"),
+            "notl-sare-backup.json"
         );
 
         let long_name = format!("{}.pdf", "å".repeat(150));

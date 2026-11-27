@@ -102,7 +102,7 @@ export function SettingsModal({
       const json = await exportBackupJson();
       const dateStr = new Date().toISOString().slice(0, 10);
       const saved = await saveTextFileWithDialog(
-        `notlasare-backup-${dateStr}.json`,
+        `notl-sare-backup-${dateStr}.json`,
         json,
       );
       if (saved) {

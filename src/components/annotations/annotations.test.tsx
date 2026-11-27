@@ -274,7 +274,7 @@ describe('AnnotationCanvas pointer interaction & multi-touch abort', () => {
       />
     );
 
-    const root = container.querySelector('.notlasare-annotation-root')!;
+    const root = container.querySelector('.notl-sare-annotation-root')!;
     mockBoundingRect(root);
 
     fireEvent.pointerDown(root, { pointerId: 1, clientX: 50, clientY: 100 });
@@ -315,7 +315,7 @@ describe('AnnotationCanvas pointer interaction & multi-touch abort', () => {
       />
     );
 
-    const root = container.querySelector('.notlasare-annotation-root')!;
+    const root = container.querySelector('.notl-sare-annotation-root')!;
     mockBoundingRect(root);
 
     fireEvent.pointerDown(root, { pointerId: 1, clientX: 100, clientY: 200 });
@@ -373,7 +373,7 @@ describe('AnnotationCanvas pointer interaction & multi-touch abort', () => {
     }
 
     const { container } = render(<Harness />);
-    const root = container.querySelector('.notlasare-annotation-root')!;
+    const root = container.querySelector('.notl-sare-annotation-root')!;
     mockBoundingRect(root);
 
     // Place stamp at (0.5, 0.5)
@@ -718,7 +718,7 @@ describe('AnnotationCanvas resize, text, and eraser scrub', () => {
       />
     );
 
-    const root = container.querySelector('.notlasare-annotation-root')!;
+    const root = container.querySelector('.notl-sare-annotation-root')!;
     mockRect(root);
 
     // Select stamp
@@ -805,7 +805,7 @@ describe('AnnotationCanvas resize, text, and eraser scrub', () => {
       />
     );
 
-    const root = container.querySelector('.notlasare-annotation-root')!;
+    const root = container.querySelector('.notl-sare-annotation-root')!;
     mockRect(root);
 
     fireEvent.pointerDown(root, { pointerId: 1, clientX: 100, clientY: 353.5 });
@@ -1074,7 +1074,7 @@ describe('Merged geometry, hidden layers, and PDF export assertions', () => {
       />,
     );
 
-    const root = container.querySelector('.notlasare-annotation-root')!;
+    const root = container.querySelector('.notl-sare-annotation-root')!;
     mockRect(root);
     fireEvent.pointerDown(root, { pointerId: 1, clientX: 50, clientY: 100 });
     fireEvent.pointerMove(root, { pointerId: 1, clientX: 150, clientY: 100 });

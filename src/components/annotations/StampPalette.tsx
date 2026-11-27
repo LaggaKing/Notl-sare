@@ -128,21 +128,21 @@ export const StampPalette: React.FC<StampPaletteProps> = ({
 
   return (
     <div
-      className="notlasare-stamp-backdrop"
+      className="notl-sare-stamp-backdrop"
       role="dialog"
       aria-modal="true"
       aria-label={t.actions.chooseStamp}
       onClick={onClose}
     >
       <div
-        className="notlasare-stamp-sheet"
+        className="notl-sare-stamp-sheet"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="notlasare-stamp-sheet-header">
-          <h2 className="notlasare-stamp-sheet-title">{t.actions.chooseStamp}</h2>
+        <div className="notl-sare-stamp-sheet-header">
+          <h2 className="notl-sare-stamp-sheet-title">{t.actions.chooseStamp}</h2>
           <button
             type="button"
-            className="notlasare-tool-btn"
+            className="notl-sare-tool-btn"
             onClick={onClose}
             aria-label={t.actions.close}
             title={t.actions.close}
@@ -151,7 +151,7 @@ export const StampPalette: React.FC<StampPaletteProps> = ({
           </button>
         </div>
 
-        <div className="notlasare-stamp-tabs" role="tablist" aria-label={t.actions.stamps}>
+        <div className="notl-sare-stamp-tabs" role="tablist" aria-label={t.actions.stamps}>
           {(['all', ...STAMP_CATEGORIES] as const).map((cat) => {
             const isActive = selectedCategory === cat;
             return (
@@ -160,7 +160,7 @@ export const StampPalette: React.FC<StampPaletteProps> = ({
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                className={`notlasare-stamp-tab ${isActive ? 'notlasare-stamp-tab--active' : ''}`}
+                className={`notl-sare-stamp-tab ${isActive ? 'notl-sare-stamp-tab--active' : ''}`}
                 onClick={() => setSelectedCategory(cat)}
               >
                 {t.stampCategories[cat]}
@@ -169,15 +169,15 @@ export const StampPalette: React.FC<StampPaletteProps> = ({
           })}
         </div>
 
-        <div className="notlasare-stamp-grid-scroll">
+        <div className="notl-sare-stamp-grid-scroll">
           {categoriesToDisplay.map((category) => {
             const stamps = getStampsByCategory(category);
             return (
               <section key={category} aria-label={t.stampCategories[category]}>
-                <h3 className="notlasare-stamp-category-title">
+                <h3 className="notl-sare-stamp-category-title">
                   {t.stampCategories[category]}
                 </h3>
-                <div className="notlasare-stamp-grid">
+                <div className="notl-sare-stamp-grid">
                   {stamps.map((def) => {
                     const isSelected = def.type === activeStamp;
                     const label = t.stamps[def.type];
@@ -185,7 +185,7 @@ export const StampPalette: React.FC<StampPaletteProps> = ({
                       <button
                         key={def.type}
                         type="button"
-                        className={`notlasare-stamp-card ${isSelected ? 'notlasare-stamp-card--active' : ''}`}
+                        className={`notl-sare-stamp-card ${isSelected ? 'notl-sare-stamp-card--active' : ''}`}
                         onClick={() => {
                           onSelectStamp(def.type);
                           onClose();
@@ -193,7 +193,7 @@ export const StampPalette: React.FC<StampPaletteProps> = ({
                         aria-pressed={isSelected}
                         aria-label={label}
                       >
-                        <span className="notlasare-stamp-card-glyph">
+                        <span className="notl-sare-stamp-card-glyph">
                           <StampGlyph
                             stampType={def.type}
                             color={
@@ -203,7 +203,7 @@ export const StampPalette: React.FC<StampPaletteProps> = ({
                             }
                           />
                         </span>
-                        <span className="notlasare-stamp-card-name">{label}</span>
+                        <span className="notl-sare-stamp-card-name">{label}</span>
                       </button>
                     );
                   })}
