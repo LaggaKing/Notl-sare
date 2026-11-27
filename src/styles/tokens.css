@@ -1,0 +1,89 @@
+:root {
+  color-scheme: dark;
+
+  /* Core concert-dark palette */
+  --bg-primary: #141416;
+  --bg-surface: #1e1f23;
+  --bg-elevated: #272930;
+  --bg-overlay: rgba(20, 20, 22, 0.88);
+  --border-subtle: rgba(243, 241, 236, 0.1);
+  --border-strong: rgba(243, 241, 236, 0.2);
+
+  /* Typography colors */
+  --text-primary: #f3f1ec;
+  --text-secondary: #b8b5ad;
+  --text-muted: #827f77;
+  --text-on-accent: #141416;
+
+  /* Warm amber choir-stand accent */
+  --accent: #e5a93c;
+  --accent-hover: #f0b952;
+  --accent-muted: rgba(229, 169, 60, 0.18);
+  --accent-ring: rgba(229, 169, 60, 0.45);
+
+  /* Semantic colors */
+  --danger: #e05d5d;
+  --success: #56b881;
+  --warning: #e5a93c;
+
+  /* Annotation palette defaults */
+  --ink-crimson: #d64545;
+  --ink-cobalt: #3b82f6;
+  --ink-forest: #2f9e62;
+  --ink-charcoal: #1e1e22;
+  --highlighter-amber: #f7c948;
+
+  /* Sheet paper & tint filters */
+  --sheet-bg: #fcfbf7;
+  --sheet-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --paper-filter-none: none;
+  --paper-filter-warm: sepia(0.18) brightness(0.96) contrast(1.02);
+  --paper-filter-night: invert(0.92) hue-rotate(180deg) brightness(0.9) contrast(1.06);
+
+  /* Touch & sizing tokens */
+  --touch-target-min: 48px;
+  --toolbar-height: 56px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Typography */
+  --font-sans: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", monospace;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-primary: #f4f1ea;
+  --bg-surface: #ffffff;
+  --bg-elevated: #eae5da;
+  --bg-overlay: rgba(244, 241, 234, 0.92);
+  --border-subtle: rgba(20, 20, 22, 0.1);
+  --border-strong: rgba(20, 20, 22, 0.22);
+
+  --text-primary: #18181b;
+  --text-secondary: #4e4c46;
+  --text-muted: #78746c;
+  --text-on-accent: #141416;
+
+  --accent: #c98617;
+  --accent-hover: #b67610;
+  --accent-muted: rgba(201, 134, 23, 0.14);
+  --accent-ring: rgba(201, 134, 23, 0.4);
+
+  --sheet-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+[data-paper-tint="none"] {
+  --active-paper-filter: var(--paper-filter-none);
+}
+
+[data-paper-tint="warm"] {
+  --active-paper-filter: var(--paper-filter-warm);
+}
+
+[data-paper-tint="night"] {
+  --active-paper-filter: var(--paper-filter-night);
+}

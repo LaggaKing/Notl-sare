@@ -1,0 +1,455 @@
+.reader-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.reader-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.reader-transform-layer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.reader-crop-frame {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--sheet-bg);
+  box-shadow: var(--sheet-shadow);
+  border-radius: 3px;
+}
+
+.reader-crop-frame.is-cropping {
+  overflow: visible;
+}
+
+.reader-page-surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--sheet-bg);
+  isolation: isolate;
+}
+
+.reader-page-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.reader-overlay-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* Half-page turn split presentation */
+.reader-half-split {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--sheet-bg);
+}
+
+.reader-half-pane {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.reader-half-pane-clip {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.reader-half-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-1px);
+  background-color: var(--accent);
+  box-shadow: 0 0 10px rgba(229, 169, 60, 0.75);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.reader-half-label {
+  position: absolute;
+  right: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--bg-overlay);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  pointer-events: none;
+  border: 1px solid var(--accent-ring);
+}
+
+.reader-half-label-top {
+  bottom: 6px;
+}
+
+.reader-half-label-bottom {
+  top: 6px;
+}
+
+.reader-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* HUD Chrome */
+.reader-hud-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.reader-hud-bar {
+  pointer-events: auto;
+  background-color: var(--bg-overlay);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 10px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.reader-hud-bar.is-bottom {
+  border-bottom: none;
+  border-top: 1px solid var(--border-subtle);
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.reader-hud-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.reader-hud-title-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 260px;
+}
+
+.reader-hud-title {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reader-hud-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-btn {
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+  padding: 0 12px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.hud-btn.is-active {
+  background-color: var(--accent);
+  color: var(--text-on-accent);
+  border-color: transparent;
+}
+
+.hud-btn.is-accent-pill {
+  background-color: var(--accent-muted);
+  border-color: var(--accent);
+  color: var(--accent);
+  border-radius: var(--radius-pill);
+}
+
+.hud-btn-icon {
+  padding: 0;
+  width: var(--touch-target-min);
+}
+
+.hud-scrubber-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-scrubber-input {
+  flex: 1;
+  min-height: var(--touch-target-min);
+  padding: 0;
+  background: transparent;
+  border: none;
+  accent-color: var(--accent);
+}
+
+.hud-tools-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hud-popover {
+  pointer-events: auto;
+  position: absolute;
+  top: 72px;
+  right: 14px;
+  width: min(320px, calc(100vw - 28px));
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 40;
+}
+
+/* Bookmarks drawer */
+.bookmarks-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 45;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bookmarks-drawer {
+  width: min(360px, 92vw);
+  height: 100%;
+  background-color: var(--bg-surface);
+  border-left: 1px solid var(--border-strong);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 14px;
+}
+
+.bookmarks-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookmarks-drawer-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.bookmark-add-form {
+  display: flex;
+  gap: 8px;
+}
+
+.bookmark-add-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+.bookmark-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.bookmark-jump-btn {
+  flex: 1;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 6px 8px;
+}
+
+/* Manual crop overlay */
+.crop-overlay-root {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  touch-action: none;
+}
+
+.crop-box {
+  position: absolute;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
+  cursor: move;
+  touch-action: none;
+}
+
+.crop-grid-line {
+  position: absolute;
+  background-color: rgba(229, 169, 60, 0.35);
+  pointer-events: none;
+}
+
+.crop-handle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  margin-left: -24px;
+  margin-top: -24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  touch-action: none;
+  z-index: 5;
+}
+
+.crop-handle-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 2px solid #141416;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.crop-controls-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 35;
+  background-color: var(--bg-overlay);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 24px);
+}
+
+.crop-controls-hint {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.crop-controls-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Slot host wrappers for Stage 3 overlays */
+.reader-slot-top-floating {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 36;
+  pointer-events: none;
+}
+
+.reader-slot-top-floating.has-hud {
+  top: 76px;
+}
+
+.reader-slot-bottom-floating {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 36;
+  pointer-events: none;
+}
+
+.reader-slot-bottom-floating.has-hud {
+  bottom: 144px;
+}
+
+@media (max-width: 960px) {
+  .hud-popover {
+    top: 132px;
+  }
+
+  .reader-slot-top-floating.has-hud {
+    top: 132px;
+  }
+
+  .reader-slot-bottom-floating.has-hud {
+    bottom: 156px;
+  }
+}
+
+.reader-slot-top-floating > *,
+.reader-slot-bottom-floating > *,
+.reader-slot-toolbar > * {
+  pointer-events: auto;
+}
+
+.reader-slot-toolbar {
+  position: absolute;
+  inset: 0;
+  z-index: 34;
+  pointer-events: none;
+}

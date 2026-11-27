@@ -1,0 +1,40 @@
+name: Rehearsal Feedback & Feature Request
+description: Share rehearsal feedback, UX suggestions, or feature ideas
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We'd love to hear how Notläsare works for your choir rehearsals or concerts!
+
+  - type: input
+    id: app-version
+    attributes:
+      label: App Version
+      placeholder: "v0.1.0-alpha.1"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Library & Setlists
+        - PDF Reader & Page Turning
+        - Annotations & Stamps
+        - Metronome & Reference Piano
+        - Export & Backup
+        - Swedish / English Translation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Feedback or Suggestion
+      description: Describe what worked well, what felt awkward, or what would help in rehearsal/concert use.
+    validations:
+      required: true

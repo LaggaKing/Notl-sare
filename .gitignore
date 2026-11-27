@@ -1,0 +1,26 @@
+# Dependencies & JS build output
+node_modules/
+dist/
+
+# Rust / Tauri build artifacts & generated platform schemas
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# Machine-local Cargo overrides (e.g. custom target-dir)
+.cargo/config.toml
+src-tauri/.cargo/config.toml
+
+# Environment & local overrides
+.env
+.env.*
+*.local
+
+# Local SQLite databases
+*.db
+*.db-wal
+*.db-shm
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/

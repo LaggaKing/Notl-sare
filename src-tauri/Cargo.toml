@@ -1,0 +1,29 @@
+[package]
+name = "notlasare"
+version = "0.1.0"
+description = "Local-only portrait choir and vocal PDF sheet music reader and annotator"
+authors = ["Notläsare contributors"]
+license = "MIT"
+edition = "2021"
+
+[lib]
+name = "notlasare"
+path = "src/lib.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.32", features = ["bundled"] }
+sha2 = "0.10"
+hex = "0.4"
+walkdir = "2"
+dirs = "5"
+chrono = { version = "0.4", features = ["serde"] }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = ["Win32_System_Power"] }

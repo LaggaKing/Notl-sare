@@ -1,0 +1,551 @@
+/* === Annotation Canvas & Overlay Layers === */
+
+.notlasare-annotation-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.notlasare-annotation-root--active {
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.notlasare-annotation-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.notlasare-annotation-svg--highlighter {
+  mix-blend-mode: multiply;
+}
+
+.notlasare-annotation-root--active .notlasare-annotation-svg--interactive {
+  pointer-events: auto;
+  touch-action: none;
+}
+
+/* Selection UI overlay inside SVG / HTML */
+.notlasare-annotation-controls-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.notlasare-selection-box {
+  position: absolute;
+  border: 2px dashed var(--accent);
+  border-radius: 6px;
+  background: rgba(229, 169, 60, 0.08);
+  pointer-events: none;
+}
+
+.notlasare-selection-handle {
+  position: absolute;
+  min-width: var(--touch-target-min, 48px);
+  min-height: var(--touch-target-min, 48px);
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  touch-action: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--bg-surface);
+  z-index: 8;
+}
+
+.notlasare-selection-handle--delete {
+  background: var(--danger);
+  color: #ffffff;
+  transform: translate(-50%, -50%);
+}
+
+.notlasare-selection-handle--resize {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  transform: translate(-50%, -50%);
+  cursor: nwse-resize;
+}
+
+.notlasare-selection-handle--edit {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+/* Inline floating text editor */
+.notlasare-text-popover {
+  position: absolute;
+  z-index: 20;
+  min-width: 240px;
+  max-width: min(320px, calc(100% - 24px));
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.notlasare-text-popover-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 16px;
+  resize: vertical;
+}
+
+.notlasare-text-popover-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.notlasare-btn-primary {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  min-height: var(--touch-target-min, 48px);
+  min-width: var(--touch-target-min, 48px);
+}
+
+.notlasare-btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  min-height: var(--touch-target-min, 48px);
+  min-width: var(--touch-target-min, 48px);
+}
+
+.notlasare-btn-danger {
+  background: rgba(224, 93, 93, 0.16);
+  color: var(--danger);
+  border: 1px solid rgba(224, 93, 93, 0.35);
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  min-height: var(--touch-target-min, 48px);
+  min-width: var(--touch-target-min, 48px);
+}
+
+/* === Floating / Dockable Annotation Toolbar === */
+
+.notlasare-ann-toolbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  width: min(760px, calc(100vw - 16px));
+  background: var(--bg-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.48);
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-primary);
+  touch-action: manipulation;
+}
+
+.notlasare-ann-toolbar--top {
+  top: 10px;
+}
+
+.notlasare-ann-toolbar--bottom {
+  bottom: 10px;
+}
+
+.notlasare-ann-toolbar--collapsed {
+  width: auto;
+  max-width: calc(100vw - 24px);
+  padding: 4px 8px;
+}
+
+.notlasare-ann-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 4px;
+}
+
+.notlasare-ann-subrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.notlasare-ann-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.notlasare-ann-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border-subtle);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 840px) {
+  .notlasare-ann-divider {
+    display: none;
+  }
+}
+
+.notlasare-tool-btn {
+  min-width: var(--touch-target-min, 48px);
+  min-height: var(--touch-target-min, 48px);
+  padding: 0 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.notlasare-tool-btn--active {
+  background: var(--accent-muted);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.notlasare-tool-btn--accent {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 0 14px;
+}
+
+.notlasare-tool-btn--subtle {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.notlasare-swatch-btn {
+  min-width: var(--touch-target-min, 48px);
+  min-height: var(--touch-target-min, 48px);
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notlasare-swatch-btn--active {
+  background: var(--bg-elevated);
+  border-color: var(--accent);
+}
+
+.notlasare-swatch-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+.notlasare-size-btn {
+  min-width: var(--touch-target-min, 48px);
+  min-height: var(--touch-target-min, 48px);
+  padding: 0 12px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+.notlasare-size-btn--active {
+  background: var(--accent-muted);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.notlasare-ann-hint {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 0 6px;
+  white-space: nowrap;
+}
+
+.notlasare-tool-label {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .notlasare-tool-label {
+    display: inline;
+  }
+}
+
+/* === Layers Popover === */
+
+.notlasare-layers-popover {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(360px, calc(100vw - 24px));
+  max-height: 55vh;
+  overflow-y: auto;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+  padding: 12px;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notlasare-layers-popover--top {
+  top: 190px;
+}
+
+.notlasare-layers-popover--bottom {
+  bottom: 190px;
+}
+
+.notlasare-layers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.notlasare-layers-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.notlasare-layer-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+}
+
+.notlasare-layer-row--active {
+  border-color: var(--accent);
+  background: var(--accent-muted);
+}
+
+.notlasare-layer-select-btn {
+  flex: 1;
+  min-height: var(--touch-target-min, 48px);
+  justify-content: flex-start;
+  padding: 0 10px;
+  text-align: left;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notlasare-layer-active-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--text-on-accent);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* === Stamp Palette Modal / Sheet === */
+
+.notlasare-stamp-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.56);
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+}
+
+@media (min-width: 640px) {
+  .notlasare-stamp-backdrop {
+    align-items: center;
+  }
+}
+
+.notlasare-stamp-sheet {
+  width: min(640px, 100%);
+  max-height: 78vh;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.notlasare-stamp-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.notlasare-stamp-sheet-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.notlasare-stamp-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.notlasare-stamp-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.notlasare-stamp-tab {
+  min-height: var(--touch-target-min, 48px);
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.notlasare-stamp-tab--active {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.notlasare-stamp-grid-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.notlasare-stamp-category-title {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.notlasare-stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 8px;
+}
+
+.notlasare-stamp-card {
+  min-height: 76px;
+  padding: 8px 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.notlasare-stamp-card--active {
+  border-color: var(--accent);
+  background: var(--accent-muted);
+}
+
+.notlasare-stamp-card-glyph {
+  width: 38px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+.notlasare-stamp-card-name {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--text-secondary);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
